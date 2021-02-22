@@ -3,7 +3,7 @@
 Idea 1: Predicting The Burned Area of Forest Fires
 
 Burnt area prediction after forest fires plays a vital role in planning mitigation
-measures for government. It can be predicted useing various meteorological factors
+measures for the government. It can be predicted using various meteorological factors
 like temperature, humidity, wind, rain, etc.
 Dataset: https://archive.ics.uci.edu/ml/datasets/forest+fires
 
