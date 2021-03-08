@@ -1,4 +1,4 @@
-# Team4
+# Aqua365
 
 ## Problem Statement
 Public Water Systems (PWS) provides water, recycled water, and wastewater service to thousands people across several cities in California. However, in the recent years the gap between water consumption and water production has increased and droughts have plagued local communities.
