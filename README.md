@@ -1,29 +1,17 @@
 # Team4
+***
+## Problem Statement
+Public Water Systems (PWS) provides water, recycled water, and wastewater service to thousands people across several cities in California. However, in the recent years the gap between water consumption and water production has increased and droughts have plagued local communities.
 
-Idea 1: Predicting The Burned Area of Forest Fires
+## Abstract
+Through this project we aim to precisely and accurately forecast water demand to encourage expansion of conservation programs. Our project thrives to bridge the ever increasing gap between water consumption and water production. This kind of demand forecasting is commonly used in the energy sector and this project plans to further implement this approach in the water sector, to help anticipate the upcoming shortages.
 
-Burnt area prediction after forest fires plays a vital role in planning mitigation
-measures for the government. It can be predicted using various meteorological factors
-like temperature, humidity, wind, rain, etc.
-Dataset: https://archive.ics.uci.edu/ml/datasets/forest+fires
+## Approach
+The data is going to be gathered from the source and multiple datasets will be refined and pre-processed. The data will be then stored on IBM cloud and then further will be spliced into training data and test data. Dependencies and relationships between the data will be identified and will be trained using appropriate prediction algorithms. The predictions generated would be presented to the user when a request is made through a GUI. 
 
-Idea 2: Solar Radiation Prediction
+## Persona
+Government agencies
 
-Solar radiation prediction has a great importance in electricity generation from 
-solar energy and helps to size photovoltaic power systems.
-Dataset: https://www.kaggle.com/dronio/SolarEnergy
-
-Idea 3: Hourly Energy Demand and Price Forecasting for Spain
-
-Demand and Price Forecasting Helps Government and Private Companies in Managing Resources.
-Considering the need of electricity in every other task in human life, demand management
-and forecasting in this domain are critically important.
-Dataset: https://www.kaggle.com/nicholasjhana/energy-consumption-generation-prices-and-weather
-
-Idea 4: Diabetes Prediction of Pima Indians Based on Diagnostic Measurements
-
-Among American Indian tribes, Pima Indians have the highest incidence rates of diabetes in the world, 
-increased risk for obesity, diabetes, and chronic kidney disease in the American Indian population.
-The objective is to predict whether or not a patient has diabetes, based on certain diagnostic 
-measurements such as insulin level, age, BMI and so on.
-Dataset: https://www.kaggle.com/uciml/pima-indians-diabetes-database
+## Dataset
+https://data.ca.gov/dataset/drinking-water-public-water-system-annually-reported-water-production-and-delivery-information
+***
