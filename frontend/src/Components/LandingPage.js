@@ -1,14 +1,14 @@
 import React from 'react';
-import {useState, useEffect} from 'react';
-import {Navbar,Nav,Button, Row, Col, Image} from 'react-bootstrap/esm';
-import {Bar, Line, Pie} from 'react-chartjs-2';
+import { useState, useEffect } from 'react';
+import { Navbar, Nav, Button, Row, Col, Image } from 'react-bootstrap/esm';
+import { Bar, Line, Pie } from 'react-chartjs-2';
 
 function LandingPage() {
     const [string, setstring] = useState("");
 
-    useEffect(()=>{
+    useEffect(() => {
         fetch('/testapi').then(response => {
-            if(response.ok){
+            if (response.ok) {
                 console.log(response)
                 return response.json()
             }
@@ -16,17 +16,41 @@ function LandingPage() {
             console.log(data);
             setstring(data.name);
         })
-    
-    },[])
+
+    }, [])
+
     const data = {
-        labels:['Jan', 'Feb', 'Mar','Apr','May'],
-        dataSets:[
+        labels: ['1', '2', '3', '4', '5', '6'],
+        datasets: [
             {
-                label:"Labels",
-                data:[3,1,2,3,4]
-            }
-        ]
-    }
+                label: '# of Votes',
+                data: [12, 19.5, 3.5, 5, 2, 3],
+                fill: false,
+                backgroundColor: 'rgb(255, 99, 132)',
+                borderColor: 'rgba(255, 99, 132, 0.2)',
+            },
+            {
+                label: '# of predicted',
+                data: [33, 25, 35, 51, 54, 76],
+                fill: false,
+                backgroundColor: '#742774',
+                borderColor: '#742774',
+            },
+        ],
+    };
+
+    const options = {
+        maintainAspectRatio: false,
+        scales: {
+            yAxes: [
+                {
+                    ticks: {
+                        beginAtZero: true,
+                    },
+                },
+            ],
+        },
+    };
 
     return (
         <div>
@@ -35,12 +59,11 @@ function LandingPage() {
                 <Nav className="mr-auto">
                 </Nav>
             </Navbar>
-            <h1>{string}</h1>
-            <div className="chart">
-                <Line
-                    data={data}
-                />
-            
+            <div class="container">
+                <h1>{string}</h1>
+                <div className="chart">
+                    <Line data={data} options={options} height={400} width={600} />
+                </div>
             </div>
         </div>
     )
