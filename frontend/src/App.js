@@ -1,6 +1,7 @@
 import Routes from './Components/Routes';
 import { BrowserRouter } from 'react-router-dom'
 import './App.css';
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
 function App () {
   return (
