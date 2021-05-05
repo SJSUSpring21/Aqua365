@@ -5,6 +5,9 @@ import { Bar, Line, Pie } from 'react-chartjs-2';
 
 function LandingPage() {
     const [string, setstring] = useState("");
+    const [yearList, setyearList] = useState([]);
+    const [actualWqi, setactualWqi] = useState([]);
+    const [predictedWqi, setpredictedWqi] = useState([]);
 
     useEffect(() => {
         fetch('/testapi').then(response => {
@@ -15,26 +18,32 @@ function LandingPage() {
         }).then(data => {
             console.log(data);
             setstring(data.name);
+            setyearList(data.yearList);
+            setactualWqi(data.actualWqi);
+            setpredictedWqi(data.predictedWqi);
         })
 
     }, [])
 
     const data = {
-        labels: ['1', '2', '3', '4', '5', '6'],
+        // labels: ['1', '2', '3', '4', '5', '6'],
+        labels: yearList,
         datasets: [
             {
-                label: '# of Votes',
-                data: [12, 19.5, 3.5, 5, 2, 3],
+                label: 'Actual WQI',
+                // data: [12, 19.5, 3.5, 5, 2, 3],
+                data: actualWqi,
                 fill: false,
-                backgroundColor: 'rgb(255, 99, 132)',
-                borderColor: 'rgba(255, 99, 132, 0.2)',
+                backgroundColor: 'red',
+                borderColor: 'red',
             },
             {
-                label: '# of predicted',
-                data: [33, 25, 35, 51, 54, 76],
+                label: 'Predicted WQI',
+                // data: [33, 25, 35, 51, 54, 76],
+                data: predictedWqi,
                 fill: false,
-                backgroundColor: '#742774',
-                borderColor: '#742774',
+                backgroundColor: 'blue',
+                borderColor: 'blue',
             },
         ],
     };
