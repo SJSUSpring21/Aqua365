@@ -11,3 +11,23 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.graph1{
+  height: 100vh;
+}
+
+.graph2{
+  height: 100vh;
+}
+
+.forms{
+  height: 100vh;
+}
+
+.form-heading{
+  text-align: left;
+}
+
+.last{
+  text-align: left;
+}

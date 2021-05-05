@@ -1,6 +1,7 @@
-from flask import Flask
+from flask import Flask , jsonify, request
 import pymongo
 from pymongo import MongoClient
+from flask import request
 app = Flask(__name__)
 
 cluster = MongoClient("mongodb+srv://admin:saiyangoku@cluster0.p6nod.mongodb.net/Aqua365?retryWrites=true&w=majority")
@@ -150,6 +151,13 @@ def index():
     print(return_obj)
 
     return return_obj
+
+@app.route('/savedetails', methods=['POST'])
+def save():
+    req = request.get_json(force=True)
+    print(req)
+    return req
+
 
 if __name__ == '__main__':
     app.run(debug=True)
