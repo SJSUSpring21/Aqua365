@@ -36,3 +36,18 @@
     transform: rotate(360deg);
   }
 }
+
+.Nav-header {
+font-family: 'Megrim', cursive;
+font-weight: 600;
+font-size: 500px;
+}
+
+.font-applier-header {
+  font-family: 'Gruppo', cursive;
+  font-weight: 600;
+}
+
+.font-applier-content {
+  font-family: 'Montserrat', sans-serif;
+}

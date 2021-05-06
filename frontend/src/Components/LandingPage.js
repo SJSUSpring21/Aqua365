@@ -160,16 +160,16 @@ function LandingPage() {
                 // data: [12, 19.5, 3.5, 5, 2, 3],
                 data: actualWqi,
                 fill: false,
-                backgroundColor: 'red',
-                borderColor: 'red',
+                backgroundColor: '#66A5AD',
+                borderColor: '#66A5AD',
             },
             {
                 label: 'Predicted WQI',
                 // data: [33, 25, 35, 51, 54, 76],
                 data: predictedWqi,
                 fill: false,
-                backgroundColor: 'blue',
-                borderColor: 'blue',
+                backgroundColor: '#003B46',
+                borderColor: '#003B46',
             },
         ],
     };
@@ -190,14 +190,17 @@ function LandingPage() {
     return (
         <div>
             <div className="graph1">
-                <Navbar bg="dark" variant="dark">
-                    <Navbar.Brand href="#home">Aqua365</Navbar.Brand>
-                    <Nav className="mr-auto">
-                    </Nav>
+                <Navbar variant="dark" style={{backgroundColor: "#003B46"}}>
+                    <div style={{marginLeft:"5%"}}>
+                        <Navbar.Brand href="#home"className="Nav-header"><h1>Aqua365</h1></Navbar.Brand>
+                        <Nav className="mr-auto">
+                        </Nav>
+                    </div>
                 </Navbar>
-            
                 <div class="container">
-                    <h1>{string}</h1>
+                    <br/>
+                    <h1 className="font-applier-header">{string}</h1>
+                    <hr/>
                     <div className="chart">
                         <Line data={data} options={options} height={400} width={600} />
                     </div>
@@ -208,12 +211,14 @@ function LandingPage() {
                 <h1>Graph2</h1>
             </div>
 
-            <div className="forms">
+            <div className="forms container">
                 
-                <h2 className="form-heading">Make an Entry</h2>
+                <h2 className="form-heading font-applier-header">Make an Entry</h2>
+                <hr/>
                 <div className={classes.root}>
                 <div>
                   <TextField
+                    type="number"
                     id="standard-full-width"
                     label="Station Code"
                     style={{ margin: 8 }}
