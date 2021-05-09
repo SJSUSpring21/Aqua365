@@ -10,9 +10,9 @@ class Routes extends Component {
     render () {
         return (
             <div>
-                <Route path='/dashboard' component= {LandingPage} />
-                <Route path='/' component = {HeroSection} />
-                <Route parh="/result" component = {Result} />
+                <Route exact path='/dashboard' component= {LandingPage} />
+                <Route exact path='/' component = {HeroSection} />
+                <Route exact path="/result" component = {Result} />
             </div>
         )
     }
