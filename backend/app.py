@@ -93,6 +93,7 @@ def index():
     df['wec']=df.nec* 0.009
     df['wna']=df.nna * 0.028
     df['wco']=df.nco * 0.281
+    df['year']=df['year']+6
     df['wqi']=df.wph+df.wdo+df.wbdo+df.wec+df.wna+df.wco 
 
     ag=df.groupby('year')['wqi'].mean()

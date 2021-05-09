@@ -4,10 +4,13 @@ import { Navbar, Nav, Row, Col, Image } from 'react-bootstrap/esm';
 import {Line} from 'react-chartjs-2';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button'
+// import Button from '@material-ui/core/Button';
+import {Button} from 'react-bootstrap'
 import axios from 'axios';
+import {useHistory, useLocation} from 'react-router-dom';
 
 function LandingPage() {
+    const history = useHistory();
     const [string, setstring] = useState("");
     const [yearList, setyearList] = useState([]);
     const [actualWqi, setactualWqi] = useState([]);
@@ -23,6 +26,7 @@ function LandingPage() {
     const[bod, setBod]= useState(0);
     const[nitrate, setNitrate]= useState(0);
     const[coliform, setColiform]= useState(0);
+    const[year,setYear] = useState(0);
 
     // Validation text
     const[allValidation, setAllValidation] = useState("");
@@ -33,6 +37,7 @@ function LandingPage() {
     const[bodValidation, setBodValidation]= useState("");
     const[nitrateValidation, setNitrateValidation]= useState("");
     const[coliformValidation, setColiformValidation]= useState("");
+    const[yearValidation, setYearValidation]= useState("");
 
     //Inputs
 
@@ -107,6 +112,10 @@ function LandingPage() {
             //7)coliform
             if(coliform > 3000){
                 setColiformValidation("Coliform is too HIGH!");
+            }
+            //8)Year
+            if(year < 2020){
+                setYearValidation("Year cannot be less than 2020");
             }
             
             const data = {
@@ -196,6 +205,9 @@ function LandingPage() {
                         <Nav className="mr-auto">
                         </Nav>
                     </div>
+                    <Nav className="ml-auto">
+                        <Nav.Link href="/">Logout</Nav.Link>
+                    </Nav>
                 </Navbar>
                 <div class="container">
                     <br/>
@@ -204,6 +216,15 @@ function LandingPage() {
                     <div className="chart">
                         <Line data={data} options={options} height={400} width={600} />
                     </div>
+                    <br/>
+                    <Button
+                    style={{backgroundColor: "#003B46"}}
+                    onClick={()=>{
+                        history.push('/result');
+                    }}
+                    >
+                        Make an entry  
+                    </Button>
                 </div>
             </div>
 
@@ -307,6 +328,7 @@ function LandingPage() {
                     helperText={nitrateValidation}
                   />
                   <br />
+                  
 
                   <div className="last">
                     <TextField
@@ -319,12 +341,25 @@ function LandingPage() {
                     setColiform(event.target.value)
                     }}
                     helperText={coliformValidation}
-                     />
-                    
+                     /> 
+                     
+                     <TextField
+                     label="Year"
+                     id="outlined-margin-normal"
+                     className={classes.textField}
+                     margin="normal"
+                     variant="outlined"
+                     onChange={(event)=>{
+                     setYear(event.target.value)
+                     }}
+                     helperText={yearValidation}
+                      />                    
                 </div>
+                
                 </div>
               </div>
               <Button 
+              style={{backgroundColor: "#003B46"}}
               variant="contained" 
               color="primary"
               onClick={(event)=>{
@@ -333,9 +368,36 @@ function LandingPage() {
               >
                     Submit
             </Button>
+            <Row>
+              <Col class="Warnings">
+                <br />
+                {temperatureValidation}
+                <br />
+                {dissolvedOxygenValidation}
+                <br/>
+                {phLevelValidation}
+                <br/>
+                {conductivityValidation}
+                <br/>
+                {bodValidation}
+                <br/>
+                {nitrateValidation}
+                <br/>
+                {coliformValidation}
+                {yearValidation}
+                <br/>
+              </Col>
+              <Col></Col>
+              <Col></Col>
+            </Row>
             <br />
             {allValidation}
+           
             </div>
+            
+              
+
+              
         </div>
     )
 }
