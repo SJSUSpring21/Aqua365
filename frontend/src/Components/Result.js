@@ -4,7 +4,8 @@ import axios from 'axios';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import { Navbar, Nav, Row, Col, Image } from 'react-bootstrap/esm';
-import Button from '../../node_modules/react-bootstrap/Button'
+import Button from '../../node_modules/react-bootstrap/Button';
+import {Link, useHistory, useLocation} from 'react-router-dom';
 
 function Result() {
     const[stationCode, setStationCode]=useState(0);
@@ -140,7 +141,7 @@ function Result() {
                         </Nav>
                     </div>
                     <Nav className="ml-auto">
-                        <Nav.Link href="/">Logout</Nav.Link>
+                        <Nav.Link><Link to="/">Logout</Link></Nav.Link>
                     </Nav>
                 </Navbar>
         <div className="forms container">

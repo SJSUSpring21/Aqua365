@@ -3,10 +3,13 @@ import pymongo
 from pymongo import MongoClient
 from flask import request
 app = Flask(__name__)
+# from bson.json_util import dumps
+# from bson.objectid import objectId
 
 cluster = MongoClient("mongodb+srv://admin:saiyangoku@cluster0.p6nod.mongodb.net/Aqua365?retryWrites=true&w=majority")
 db = cluster["Aqua365"]
 collection = db["collectedData"]
+collectionUser = db["users"]
 
 @app.route('/testapi', methods=['GET'])
 def index():
@@ -159,6 +162,24 @@ def save():
     print(req)
     return req
 
+@app.route('/login', methods=['POST'])
+def login():
+    req = request.get_json(force=True)
+    print(req['email'])
+    x = collectionUser.find_one({"email":req["email"]})
+    if x['password'] ==req['password']:
+        return_obj = {
+            "status":200,
+            "email": x["email"],
+            "password": x["password"]
+        }
+        return return_obj
+    else:
+        return {
+            "status":400
+        }
+        
+    return req
 
 if __name__ == '__main__':
     app.run(debug=True)

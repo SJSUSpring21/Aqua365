@@ -3,11 +3,17 @@ import { Navbar, Nav, Row, Col, Image, Button } from 'react-bootstrap/esm';
 import './HeroSection.css'
 import { Link } from 'react-router-dom';
 // import '../App.css'
+import { useHistory} from 'react-router-dom';
 
 
 function HeroSection({
     lightBg, topline, lightText, lightTextDesc, headline, decription, buttonLabel, img, alt, imgStart
-}) {
+}) 
+{
+    const history = useHistory();
+    function goToLogin(){
+    history.push('/login');
+}
     return (
         <div>
             <Navbar variant="dark" style={{backgroundColor: "#003B46"}}>
@@ -21,7 +27,7 @@ function HeroSection({
                 <video src='/videos/video1.mp4' autoPlay loop muted></video>
                 <h1 className="hero-header">Aqua 365</h1>
                 <div className="hero-btns">
-                    <Button variant="primary btn-lg" link='/login' style={{backgroundColor: "#003B46", height: "105%"}}><span className="font-applier-button" style={{paddingLeft:"10px", paddingRight:"10px", paddingTop:"10px", paddingBottom:"10px"}}>Login</span></Button>{' '}
+                    <Button variant="primary btn-lg" link='/login' style={{backgroundColor: "#003B46", height: "105%"}}><span className="font-applier-button" style={{paddingLeft:"10px", paddingRight:"10px", paddingTop:"10px", paddingBottom:"10px"}} onClick={goToLogin}>Login</span></Button>{' '}
                 </div>
             </div>
         </div>

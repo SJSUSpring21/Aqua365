@@ -7,7 +7,7 @@ import TextField from '@material-ui/core/TextField';
 // import Button from '@material-ui/core/Button';
 import {Button} from 'react-bootstrap'
 import axios from 'axios';
-import {useHistory, useLocation} from 'react-router-dom';
+import {Link, useHistory, useLocation} from 'react-router-dom';
 
 function LandingPage() {
     const history = useHistory();
@@ -206,7 +206,7 @@ function LandingPage() {
                         </Nav>
                     </div>
                     <Nav className="ml-auto">
-                        <Nav.Link href="/">Logout</Nav.Link>
+                        <Nav.Link><Link to="/">Logout</Link></Nav.Link>
                     </Nav>
                 </Navbar>
                 <div class="container">
@@ -226,6 +226,10 @@ function LandingPage() {
                         Make an entry  
                     </Button>
                 </div>
+            </div>
+
+            <div className="graph2">
+                <h1>Graph2</h1>
             </div>
 
 
