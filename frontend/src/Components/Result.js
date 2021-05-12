@@ -247,6 +247,7 @@ function Result() {
             label="Total Coliform"
             id="outlined-margin-normal"
             className={classes.textField}
+            placeholder="Enter Coliform Value"
             margin="normal"
             variant="outlined"
             onChange={(event)=>{
@@ -258,6 +259,7 @@ function Result() {
              <TextField
              label="Year"
              id="outlined-margin-normal"
+             placeholder="Enter Year"
              className={classes.textField}
              margin="normal"
              variant="outlined"
