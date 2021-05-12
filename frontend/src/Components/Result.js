@@ -31,6 +31,11 @@ function Result() {
     const[nitrateValidation, setNitrateValidation]= useState("");
     const[coliformValidation, setColiformValidation]= useState("");
     const[yearValidation, setYearValidation]= useState("");
+    
+
+    //WQI formula
+    const[WQI, setWQI] = useState(0);
+    const[flag, setFlag] = useState(false);
 
     //Inputs
 
@@ -94,7 +99,7 @@ function Result() {
             }else if(bod > 7 && bod < 9){
                 setBodValidation("Poor");
             }else if(bod > 9){
-                setBodValidation("Very Poor");
+                setBodValidation("Bio Chemical Oxygen Demand is very poor");
             }
 
             //6)Nitrate
@@ -129,6 +134,8 @@ function Result() {
                 .then((response)=>{
                     console.log(response.status);
                     console.log(response.data);
+                    setWQI(phLevel * 0.165 + dissolvedOxygen * 0.281 + bod * 0.234 + nitrate * 0.028+ coliform * 0.281);
+                    setFlag(true);
                 })
                 .catch((error)=>{
                     console.log(error);
@@ -291,6 +298,8 @@ function Result() {
       >
             Submit
     </Button>
+    {flag? <h1>WQI: {WQI.toFixed(2)}</h1>:null}
+    
     <Row>
       <Col class="Warnings">
         <br />
