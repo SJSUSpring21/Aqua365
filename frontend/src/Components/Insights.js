@@ -66,6 +66,10 @@ function Insights() {
     "Statistics for Biochemical Demand Oxygen"
   );
 
+  //Label
+  const [label, setLabel] = useState("Predicted BDO");
+
+
   //Avg values
   const [avgBdo, setavgBdo] = useState(0);
   const [avgCo, setavgCo] = useState(0);
@@ -118,7 +122,7 @@ function Insights() {
     labels: ["2021", "2022", "2023", "2024", "2025"],
     datasets: [
       {
-        label: "Predicted BDO",
+        label: label,
         // data: [33, 25, 35, 51, 54, 76],
         data: forecastData,
         fill: false,
@@ -147,6 +151,7 @@ function Insights() {
       setforecastData(location.state.bdoForecast);
       setHeader("Forecast for Biochemical Demand Oxygen");
       setHeader2("Statistics for Biochemical Demand Oxygen");
+      setLabel("Predicted BDO");
       setAvgValue(location.state.avgBdo.toFixed(2));
       setpercentDiffSinceStart(
         location.state.percentDiffBdoSinceStart.toFixed(2)
@@ -155,6 +160,7 @@ function Insights() {
       setforecastData(location.state.doForecast);
       setHeader("Forecast for Dissolved Oxygen");
       setHeader2("Statistics for Dissolved Oxygen");
+      setLabel("Predicted DO");
       setAvgValue(location.state.avgDo.toFixed(2));
       setpercentDiffSinceStart(
         location.state.percentDiffDoSinceStart.toFixed(2)
@@ -163,22 +169,25 @@ function Insights() {
       setforecastData(location.state.phForecast);
       setHeader("Forecast for PH");
       setHeader2("Statistics for PH");
+      setLabel("Predicted PH");
       setAvgValue(location.state.avgPh.toFixed(2));
       setpercentDiffSinceStart(
         location.state.percentDiffPhSinceStart.toFixed(2)
       );
     } else if (e.target.value == "wco") {
       setforecastData(location.state.wcoForecast);
-      setHeader("Forecast for Conductivity");
-      setHeader2("Statistics for Conductivity");
+      setHeader("Forecast for Coliform");
+      setHeader2("Statistics for Coliform");
+      setLabel("Predicted CO");
       setAvgValue(location.state.avgCo.toFixed(2));
       setpercentDiffSinceStart(
         location.state.percentDiffCoSinceStart.toFixed(2)
       );
     } else if (e.target.value == "wec") {
       setforecastData(location.state.wecForecast);
-      setHeader("Forecast for EC");
-      setHeader2("Statistics for EC");
+      setHeader("Forecast for Electric Conductivity");
+      setHeader2("Statistics for Electric Conductivity");
+      setLabel("Predicted EC");
       setAvgValue(location.state.avgEc.toFixed(2));
       setpercentDiffSinceStart(
         location.state.percentDiffEcSinceStart.toFixed(2)
@@ -187,6 +196,7 @@ function Insights() {
       setforecastData(location.state.wnaForecast);
       setHeader("Forecast for Nitrate");
       setHeader2("Statistics for Nitrate");
+      setLabel("Predicted Nitrate");
       setAvgValue(location.state.avgNa.toFixed(2));
       setpercentDiffSinceStart(
         location.state.percentDiffNaSinceStart.toFixed(2)
@@ -195,6 +205,7 @@ function Insights() {
       setforecastData(location.state.bdoForecast);
       setHeader("Forecast for Biochemical Demand Oxygen");
       setHeader2("Statistics for Biochemical Demand Oxygen");
+      setLabel("Predicted BDO");
       setAvgValue(location.state.avgBdo.toFixed(2));
       setpercentDiffSinceStart(
         location.state.percentDiffBdoSinceStart.toFixed(2)
@@ -266,8 +277,8 @@ function Insights() {
           <MenuItem value="bdo">Biochemical Demand of Oxygen</MenuItem>
           <MenuItem value="do">Dissolved Oxygen</MenuItem>
           <MenuItem value="ph">PH</MenuItem>
-          <MenuItem value="wco">Conductivity</MenuItem>
-          <MenuItem value="wec">EC</MenuItem>
+          <MenuItem value="wco">Coliform</MenuItem>
+          <MenuItem value="wec">Electric Conductivity</MenuItem>
           <MenuItem value="wna">Nitrate</MenuItem>
         </Select>
 

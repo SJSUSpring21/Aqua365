@@ -357,7 +357,7 @@ function LandingPage() {
                 </Navbar>
                     <Row class="container">
                     <Col></Col>
-                    <Col><h1 className="font-applier-header">{string}</h1></Col>
+                    <Col><h1 className="font-applier-header">Water Quality Index Analysis</h1></Col>
                     <Col>
                         
 
