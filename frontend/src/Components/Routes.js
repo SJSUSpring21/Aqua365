@@ -15,7 +15,7 @@ class Routes extends Component {
                 <Route exact path='/' component = {HeroSection} />
                 <Route exact path="/result" component = {Result} />
                 <Route exact path='/login' component = {LoginPage} />
-                {/* <Route exact path='/viewdata' component = {ViewData} /> */}
+                <Route exact path='/viewdata' component = {ViewData} />
             </div>
         )
     }

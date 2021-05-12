@@ -11,6 +11,7 @@ from sklearn.metrics import mean_squared_error
 from statsmodels.tsa.arima.model import ARIMA
 import seaborn as sns
 import warnings
+from bson.json_util import dumps
 warnings.filterwarnings("ignore")
 app = Flask(__name__)
 # from bson.json_util import dumps
@@ -529,6 +530,47 @@ def login():
         }
         
     return req
+
+@app.route('/viewdata', methods=['GET'])
+def viewdata():
+    cursorColumnsList = dataColumns.find({})
+    cursorRowsList = dataRows.find({})
+    col_dict = {}
+    col_list = []
+    col_index = 0
+
+    row_dict = {}
+    row_list = []
+    row_index = 0
+
+    list_cur = list(cursorColumnsList)
+    json_col= dumps(list_cur)
+    # print(json_data)
+
+    list_cur = list(cursorRowsList)
+    json_row = dumps(list_cur)
+
+    # for doc in cursorColumnsList:
+    #     col_index += 1
+    #     col_dict = {}
+    #     col_dict["id"] = col_index
+    #     col_list.append(col_dict)
+    
+    # print(col_list)
+    
+    # for doc in cursorRowsList:
+    #     row_index += 1
+    #     row_dict = {}
+    #     row_dict = doc
+    #     row_dict["id"] = row_index
+    #     row_list.append(row_dict)
+    
+    ret_obj = {
+        "dataColumns": json_col,
+        "dataRows": json_row
+    }
+        
+    return ret_obj
 
 
 
