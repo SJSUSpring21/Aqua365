@@ -63,11 +63,11 @@ function Insights() {
     "Forecast for Biochemical Demand Oxygen"
   );
   const [header2, setHeader2] = useState(
-    "Statistics for Biochemical Demand Oxygen"
+    "Statistics for Biochemical Demand Oxygen (mg/l)"
   );
 
   //Label
-  const [label, setLabel] = useState("Predicted BDO");
+  const [label, setLabel] = useState("Predicted BDO (mg/l)");
 
 
   //Avg values
@@ -150,8 +150,8 @@ function Insights() {
     if (e.target.value == "bdo") {
       setforecastData(location.state.bdoForecast);
       setHeader("Forecast for Biochemical Demand Oxygen");
-      setHeader2("Statistics for Biochemical Demand Oxygen");
-      setLabel("Predicted BDO");
+      setHeader2("Statistics for Biochemical Demand Oxygen (mg/l)");
+      setLabel("Predicted BDO (mg/l)");
       setAvgValue(location.state.avgBdo.toFixed(2));
       setpercentDiffSinceStart(
         location.state.percentDiffBdoSinceStart.toFixed(2)
@@ -159,8 +159,8 @@ function Insights() {
     } else if (e.target.value == "do") {
       setforecastData(location.state.doForecast);
       setHeader("Forecast for Dissolved Oxygen");
-      setHeader2("Statistics for Dissolved Oxygen");
-      setLabel("Predicted DO");
+      setHeader2("Statistics for Dissolved Oxygen (mg/l)");
+      setLabel("Predicted DO (mg/l)");
       setAvgValue(location.state.avgDo.toFixed(2));
       setpercentDiffSinceStart(
         location.state.percentDiffDoSinceStart.toFixed(2)
@@ -177,8 +177,8 @@ function Insights() {
     } else if (e.target.value == "wco") {
       setforecastData(location.state.wcoForecast);
       setHeader("Forecast for Coliform");
-      setHeader2("Statistics for Coliform");
-      setLabel("Predicted CO");
+      setHeader2("Statistics for Coliform (TC/100ml)");
+      setLabel("Predicted CO (TC/100ml)");
       setAvgValue(location.state.avgCo.toFixed(2));
       setpercentDiffSinceStart(
         location.state.percentDiffCoSinceStart.toFixed(2)
@@ -186,8 +186,8 @@ function Insights() {
     } else if (e.target.value == "wec") {
       setforecastData(location.state.wecForecast);
       setHeader("Forecast for Electric Conductivity");
-      setHeader2("Statistics for Electric Conductivity");
-      setLabel("Predicted EC");
+      setHeader2("Statistics for Electric Conductivity (µs/cm)");
+      setLabel("Predicted EC (µs/cm)");
       setAvgValue(location.state.avgEc.toFixed(2));
       setpercentDiffSinceStart(
         location.state.percentDiffEcSinceStart.toFixed(2)
@@ -195,8 +195,8 @@ function Insights() {
     } else if (e.target.value == "wna") {
       setforecastData(location.state.wnaForecast);
       setHeader("Forecast for Nitrate");
-      setHeader2("Statistics for Nitrate");
-      setLabel("Predicted Nitrate");
+      setHeader2("Statistics for Nitrate (mg/l)");
+      setLabel("Predicted Nitrate (mg/l)");
       setAvgValue(location.state.avgNa.toFixed(2));
       setpercentDiffSinceStart(
         location.state.percentDiffNaSinceStart.toFixed(2)
@@ -204,8 +204,8 @@ function Insights() {
     } else {
       setforecastData(location.state.bdoForecast);
       setHeader("Forecast for Biochemical Demand Oxygen");
-      setHeader2("Statistics for Biochemical Demand Oxygen");
-      setLabel("Predicted BDO");
+      setHeader2("Statistics for Biochemical Demand Oxygen (mg/l)");
+      setLabel("Predicted BDO (mg/l)");
       setAvgValue(location.state.avgBdo.toFixed(2));
       setpercentDiffSinceStart(
         location.state.percentDiffBdoSinceStart.toFixed(2)
@@ -224,6 +224,7 @@ function Insights() {
         </div>
         <Nav className="ml-auto">
           <Nav.Link
+            className = "font-applier-content"
             onClick={() => {
               history.push({
                 pathname: "/viewdata",
@@ -233,6 +234,7 @@ function Insights() {
             View data
           </Nav.Link>
           <Nav.Link
+            className = "font-applier-content"
             onClick={() => {
               history.push({
                 pathname: "/insights",
@@ -264,7 +266,7 @@ function Insights() {
           >
            Insights
           </Nav.Link>
-          <Nav.Link>
+          <Nav.Link className = "font-applier-content">
             <Link to="/">Logout</Link>
           </Nav.Link>
         </Nav>
@@ -301,7 +303,7 @@ function Insights() {
             </div>
         </div> */}
 
-        <div className="card">
+        <div className="card font-applier-content">
           <div className="card-container">
             <br />
             <h4>

@@ -290,12 +290,12 @@ function LandingPage() {
                         </Nav>
                     </div>
                     <Nav className="ml-auto">
-                        <Nav.Link onClick={()=>{
+                        <Nav.Link className = "font-applier-content" onClick={()=>{
                             history.push({
                                 pathname:'/viewdata'
                             })
                         }}>View data</Nav.Link>
-                        <Nav.Link onClick={()=>{
+                        <Nav.Link className = "font-applier-content" onClick={()=>{
                             history.push({
                                 pathname:'/result',
                                 state:{
@@ -324,7 +324,7 @@ function LandingPage() {
                             });
                         }}
                         >Make an entry</Nav.Link>
-                        <Nav.Link onClick={()=>{
+                        <Nav.Link className = "font-applier-content" onClick={()=>{
                             history.push({
                                 pathname:'/insights',
                                 state:{
@@ -352,36 +352,35 @@ function LandingPage() {
                                 }
                             });
                         }}>Insights</Nav.Link>
-                        <Nav.Link><Link to="/">Logout</Link></Nav.Link>
+                        <Nav.Link className = "font-applier-content"><Link to="/">Logout</Link></Nav.Link>
                     </Nav>
                 </Navbar>
+                    <br/>
                     <Row class="container">
-                    <Col></Col>
+                        <h1 className="font-applier-header" style={{marginLeft:"32%"}}>Water Quality Index Analysis</h1>
+                    {/* <Col></Col>
                     <Col><h1 className="font-applier-header">Water Quality Index Analysis</h1></Col>
                     <Col>
-                        
-
-
-                    </Col>
+                    </Col> */}
                     </Row>
+                    <div className="container"><hr/></div>
+                    
                     <div class="container">
                         <br/>
-                        <hr/>
                         <div className="chart">
                             <Line data={data} options={options} height={400} width={600} />
                         </div>
                     </div>
             </div>
-
-            <div className="card">
-            <div className="card-container">
+            <div className="card container">
+            <div className="card-container font-applier-content">
                 <br/>
                 <h4><strong>Insights for Water Quality Index</strong></h4>
                 <hr/>
-                <ul>
-                    <li><strong>Average Value: </strong>{avgWQI.toFixed(2)}</li>
-                    <li><strong>Percentage Difference Since Start: </strong>{percentDiffWqiSinceStart.toFixed(2)}</li>
-                </ul>
+                    
+                   <strong>Average Value: </strong>{avgWQI.toFixed(2)}
+                   <p><strong>Percentage Difference Since Start: </strong>{percentDiffWqiSinceStart.toFixed(2)}</p>
+               
             </div>
         </div>
         <br/>

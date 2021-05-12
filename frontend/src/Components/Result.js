@@ -92,41 +92,41 @@ function Result() {
             
             //1)temperature validation
             if(temperature > 27){
-                setTemperatureValidation("Temperature is greater than optimal");
+                setTemperatureValidation("Temperature is greater than optimal (Optimal range: 24-27°C)");
             }else if(temperature < 24){
-                setTemperatureValidation("Temperature is lower than optimal");
+                setTemperatureValidation("Temperature is lower than optimal (Optimal range: 24-27°C)");
             }
 
             //2)dissolved Oxygen Validation
-            if(dissolvedOxygen < 6.5){
-                setDissolvedOxygenValidation("Dissolved Oxygen level is Dangerous");
+            if(dissolvedOxygen < 6){
+                setDissolvedOxygenValidation("Dissolved Oxygen level is Dangerous (Optimal range: 6-9 mg/l)");
             }else if (dissolvedOxygen > 9){
-                setDissolvedOxygenValidation("Dissolved Oxygen level is high");
+                setDissolvedOxygenValidation("Dissolved Oxygen level is high (Optimal range: 6-9 mg/l)");
             }
 
             //3)phLevel Validation
             if(phLevel > 9){
-                setPhLevelValidation("PH level is too high");
+                setPhLevelValidation("PH level is too high (Optimal range: 6.5 to 9)");
             }else if(phLevel < 6){
-                setPhLevelValidation("PH level is too low");
+                setPhLevelValidation("PH level is too low (Optimal range: 6.5 to 9)");
             }
 
             //4)conductivity
             if(conductivity > 1000){
-                setConductivityValidation("Conductivity is too high");
+                setConductivityValidation("Conductivity is too high (Optimal range: 200-1000 µs/cm)");
             }else if(conductivity < 200){
-                setConductivityValidation("Conductivity is too low");
+                setConductivityValidation("Conductivity is too low (Optimal range: 200-1000 µs/cm)");
             }
 
             //5)Bod 
             if(bod > 1 && bod < 2){
-                setBodValidation("Best");
+                setBodValidation("Best (Optimal range: 1-6 mg/l)");
             }else if(bod > 3 && bod < 6){
-                setBodValidation("Moderate");
+                setBodValidation("Moderate (Optimal range: 1-6 mg/l)");
             }else if(bod > 7 && bod < 9){
-                setBodValidation("Poor");
+                setBodValidation("Poor (Optimal range: 1-6 mg/l)");
             }else if(bod > 9){
-                setBodValidation("Bio Chemical Oxygen Demand is very poor");
+                setBodValidation("Bio Chemical Oxygen Demand is very poor (Optimal range: 1-6 mg/l)");
             }
 
             //6)Nitrate
@@ -136,7 +136,7 @@ function Result() {
 
             //7)coliform
             if(coliform > 3000){
-                setColiformValidation("Coliform is too HIGH!");
+                setColiformValidation("Coliform is too High! (Optimal range: 0-3000 TC/100ml)");
             }
             //8)Year
             if(year < 2020){
@@ -209,12 +209,12 @@ function Result() {
                         </Nav>
                     </div>
                     <Nav className="ml-auto">
-                        <Nav.Link onClick={()=>{
+                        <Nav.Link className = "font-applier-content" onClick={()=>{
                             history.push({
                                 pathname:'/viewdata'
                             })
                         }}>View data</Nav.Link>
-                        <Nav.Link onClick={()=>{
+                        <Nav.Link className = "font-applier-content" onClick={()=>{
                             history.push({
                                 pathname:'/result',
                                 state:{
@@ -243,7 +243,7 @@ function Result() {
                             });
                         }}
                         >Make an entry</Nav.Link>
-                        <Nav.Link onClick={()=>{
+                        <Nav.Link className = "font-applier-content" onClick={()=>{
                             history.push({
                                 pathname:'/insights',
                                 state:{
@@ -271,7 +271,7 @@ function Result() {
                                 }
                             });
                         }}>Insights</Nav.Link>
-                        <Nav.Link><Link to="/">Logout</Link></Nav.Link>
+                        <Nav.Link className = "font-applier-content"><Link to="/">Logout</Link></Nav.Link>
                     </Nav>
                 </Navbar>
         <br/>
@@ -300,7 +300,7 @@ function Result() {
           />
             <br />
           <TextField
-            label="Temperature"
+            label="Temperature (°C)"
             id="margin-none"
             placeholder="Enter Temperature"
             className={classes.textField}
@@ -311,7 +311,7 @@ function Result() {
             helperText={temperatureValidation}
           />
           <TextField
-            label="Dissolved Oxygen"
+            label="Dissolved Oxygen (mg/l)"
             id="margin-dense"
             placeholder="Enter Dissolved Oxxygen"
             className={classes.textField}
@@ -338,7 +338,7 @@ function Result() {
         <div>
         <br />
             <TextField
-            label="Conductivity"
+            label="Conductivity (µs/cm)"
             id="margin-normal"
             placeholder="Enter Conductivity"
             className={classes.textField}
@@ -352,7 +352,7 @@ function Result() {
             <TextField
             label="Biochemical Oxygen Demand"
             id="margin-normal"
-            placeholder="Enter B.O.D"
+            placeholder="Enter B.O.D (mg/l)"
             className={classes.textField}
             variant="outlined"
             onChange={(event)=>{
@@ -361,7 +361,7 @@ function Result() {
             helperText={bodValidation}
             />
           <TextField
-            label="Nitrate"
+            label="Nitrate (mg/l)"
             id="outlined-margin-dense"
             placeholder="Enter Nitrate Value"
             className={classes.textField}
@@ -376,7 +376,7 @@ function Result() {
 
           <div className="last">
             <TextField
-            label="Total Coliform"
+            label="Total Coliform (TC/100ml)"
             id="outlined-margin-normal"
             className={classes.textField}
             placeholder="Enter Coliform Value"

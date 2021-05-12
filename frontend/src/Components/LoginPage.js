@@ -1,5 +1,5 @@
 import React from 'react'
-import { Form, Button, Navbar } from 'react-bootstrap';
+import { Form, Button, Navbar, Nav, Row, Col, Image } from 'react-bootstrap';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useHistory, Link } from 'react-router-dom';
@@ -50,13 +50,15 @@ function LoginPage() {
             </Navbar>
 
             <div id="content-wrap" class="container-fluid">
-                
-
+                <Row>
+                <Col style={{marginTop:"10%"}}><h1 className="font-applier-header">Login</h1></Col>
+                </Row>
+                <hr style={{width:"50%"}} />
                 <div class="row m-5 justify-content-center">
                     <div class="col-5">
                         <Form>
                             <Form.Group controlId="formBasicEmail">
-                                <Form.Label>Email address</Form.Label>
+                                {/* <Form.Label>Email address</Form.Label> */}
                                 <Form.Control type="email"
                                     placeholder="Enter email"
                                     onChange={(event) => {
@@ -66,7 +68,7 @@ function LoginPage() {
                             </Form.Group>
 
                             <Form.Group controlId="formBasicPassword">
-                                <Form.Label>Password</Form.Label>
+                                {/* <Form.Label>Password</Form.Label> */}
                                 <Form.Control type="password"
                                     placeholder="Password"
                                     onChange={(event) => {
@@ -76,7 +78,8 @@ function LoginPage() {
                             </Form.Group>
 
                             <Button variant="success btn-block"
-                                style={{backgroundColor: "#003B46"}}
+                                style={{backgroundColor: "#003B46", width:"30%"}}
+                                className="loginButtonCenter"
                                 type="submit"
                                 onClick={(event) => {
                                     loginUser(event)
@@ -94,7 +97,7 @@ function LoginPage() {
             </div>
 
             <footer id="footer" class='py-3 bg-dark text-white text-center' >
-                <div>
+                <div id="footer-content">
                     Group 4 - Aqua 365
                 </div>
             </footer>

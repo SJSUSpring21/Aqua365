@@ -82,10 +82,10 @@ function ViewData() {
           <Nav className="mr-auto"></Nav>
         </div>
         <Nav className="ml-auto">
-          <Nav.Link>
+          <Nav.Link className = "font-applier-content">
             <Link to="/dashboard">Home</Link>
           </Nav.Link> 
-          <Nav.Link>
+          <Nav.Link className = "font-applier-content">
             <Link to="/">Logout</Link>
           </Nav.Link>
         </Nav>
