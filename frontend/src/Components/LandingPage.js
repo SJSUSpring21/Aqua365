@@ -285,21 +285,46 @@ function LandingPage() {
             <div className="graph1">
                 <Navbar variant="dark" style={{backgroundColor: "#003B46"}}>
                     <div style={{marginLeft:"5%"}}>
-                        <Navbar.Brand href="/"className="Nav-header"><h1>Aqua365</h1></Navbar.Brand>
+                        <Navbar.Brand href="/dashboard"className="Nav-header"><h1>Aqua365</h1></Navbar.Brand>
                         <Nav className="mr-auto">
                         </Nav>
                     </div>
                     <Nav className="ml-auto">
-                        <Nav.Link><Link to="/">Logout</Link></Nav.Link>
-                    </Nav>
-                </Navbar>
-                    <Row class="container">
-                    <Col></Col>
-                    <Col><h1 className="font-applier-header">{string}</h1></Col>
-                    <Col>
-                        <Button
-                        style={{backgroundColor: "#003B46", marginRight: "5%",marginTop: "1%"}}
-                        onClick={()=>{
+                        <Nav.Link onClick={()=>{
+                            history.push({
+                                pathname:'/viewdata'
+                            })
+                        }}>View data</Nav.Link>
+                        <Nav.Link onClick={()=>{
+                            history.push({
+                                pathname:'/result',
+                                state:{
+                                    avgBdo :avgBdo,
+                                    avgCo : avgCo,
+                                    avgDo : avgDo,
+                                    avgEc : avgEc,
+                                    avgNa: avgNa,
+                                    avgPh : avgPh,
+                                    avgWQI : avgWQI,
+                                    bdoForecast: bdoForecast,
+                                    doForecast : doForecast,
+                                    phForecast: phForecast,
+                                    wcoForecast : wcoForecast,
+                                    wecForecast:wecForecast,
+                                    wnaForecast : wnaForecast,
+                                    percentDiffBdoSinceStart : percentDiffBdoSinceStart,
+                                    percentDiffCoSinceStart : percentDiffCoSinceStart,
+                                    percentDiffDoSinceStart : percentDiffCoSinceStart,
+                                    percentDiffEcSinceStart : percentDiffEcSinceStart,
+                                    percentDiffNaSinceStart : percentDiffNaSinceStart,
+                                    percentDiffPhSinceStart : percentDiffPhSinceStart,
+                                    percentDiffWqiLastStart :  percentDiffWqiLastStart,
+                                    percentDiffWqiSinceStart : percentDiffWqiSinceStart
+                                }
+                            });
+                        }}
+                        >Make an entry</Nav.Link>
+                        <Nav.Link onClick={()=>{
                             history.push({
                                 pathname:'/insights',
                                 state:{
@@ -326,24 +351,17 @@ function LandingPage() {
                                     percentDiffWqiSinceStart : percentDiffWqiSinceStart
                                 }
                             });
-                        }}
-                        >
-                            Get Details
-                        </Button>
+                        }}>Insights</Nav.Link>
+                        <Nav.Link><Link to="/">Logout</Link></Nav.Link>
+                    </Nav>
+                </Navbar>
+                    <Row class="container">
+                    <Col></Col>
+                    <Col><h1 className="font-applier-header">{string}</h1></Col>
+                    <Col>
+                        
 
-                        <Button
-                        style={{backgroundColor: "#003B46",marginTop: "1%"}}
-                        onClick={()=>{
-                            history.push({
-                                pathname:'/result',
-                                state:{
-                                    
-                                }
-                            });
-                        }}
-                        >
-                            Make an entry  
-                        </Button>
+
                     </Col>
                     </Row>
                     <div class="container">

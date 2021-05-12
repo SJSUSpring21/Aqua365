@@ -83,6 +83,9 @@ function ViewData() {
         </div>
         <Nav className="ml-auto">
           <Nav.Link>
+            <Link to="/dashboard">Home</Link>
+          </Nav.Link> 
+          <Nav.Link>
             <Link to="/">Logout</Link>
           </Nav.Link>
         </Nav>

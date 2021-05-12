@@ -10,6 +10,7 @@ import {Link, useHistory, useLocation} from 'react-router-dom';
 
 function Result() {
     const location = useLocation();
+    const history = useHistory();
 
     const[stationCode, setStationCode]=useState(0);
     const[temperature, setTemperature]= useState(0);
@@ -38,6 +39,32 @@ function Result() {
     const[flag, setFlag] = useState(false);
 
     //Inputs
+
+    //States
+
+    const[avgBdo, setavgBdo] = useState(0)
+    const[avgCo,setavgCo] = useState(0)
+    const[avgDo,setavgDo] = useState(0)
+    const[avgEc, setavgEc] = useState(0)
+    const[avgNa, setavgNa] = useState(0)
+    const[avgPh,setavgPh] = useState(0)
+    const[avgWQI, setavgWQI] = useState(0)
+
+    const[bdoForecast, setbdoForecast] = useState([]);
+    const[doForecast, setdoForecast] = useState([]);
+    const[phForecast, setphForecast] = useState([]);
+    const[wcoForecast, setwcoForecast] = useState([]);
+    const[wecForecast, setwecForecast] = useState([]);
+    const[wnaForecast, setwnaForecast] = useState([]);
+
+    const [percentDiffBdoSinceStart, setpercentDiffBdoSinceStart] = useState(0);
+    const [percentDiffCoSinceStart, setpercentCoSinceStart] = useState(0);
+    const [percentDiffDoSinceStart, setpercentDoSinceStart] = useState(0);
+    const [percentDiffEcSinceStart, setpercentEcSinceStart] = useState(0);
+    const [percentDiffNaSinceStart, setpercentNasSinceStart] = useState(0);
+    const [percentDiffPhSinceStart, setpercentPhSinceStart] = useState(0);
+    const [percentDiffWqiLastStart, setpercentDiffWqiLastStart] = useState(0);
+    const [percentDiffWqiSinceStart, setpercentDiffWqiSinceStart] = useState(0);
 
     const useStyles = makeStyles((theme) => ({
         root: {
@@ -147,6 +174,31 @@ function Result() {
       useEffect(()=>{
         console.log("123");
         console.log(location);
+
+        setavgBdo(location.state.avgBdo);
+            setavgCo(location.state.avgCo);
+            setavgDo(location.state.avgDo);
+            setavgEc(location.state.avgEc);
+            setavgNa(location.state.avgNa);
+            setavgPh(location.state.avgPh);
+            setavgWQI(location.state.avgWQI);
+
+            setbdoForecast(location.state.bdoForecast);
+            setdoForecast(location.state.doForecast);
+            setphForecast(location.state.phForecast);
+            setwcoForecast(location.state.wcoForecast);
+            setwecForecast(location.state.wecForecast);
+            setwnaForecast(location.state.wnaForecast);
+
+            setpercentDiffBdoSinceStart(location.state.percentDiffBdoSinceStart);
+            setpercentDoSinceStart(location.state.percentDiffDoSinceStart);
+            setpercentCoSinceStart(location.state.percentDiffCoSinceStart);
+            setpercentEcSinceStart(location.state.percentDiffEcSinceStart);
+            setpercentNasSinceStart(location.state.percentDiffNaSinceStart);
+            setpercentPhSinceStart(location.state.percentDiffPhSinceStart);
+            setpercentDiffWqiLastStart(location.state.percentDiffWqiLastStart);
+            setpercentDiffWqiSinceStart(location.state.percentDiffWqiSinceStart);
+
       },[]);
     return (
         <div>
@@ -157,6 +209,68 @@ function Result() {
                         </Nav>
                     </div>
                     <Nav className="ml-auto">
+                        <Nav.Link onClick={()=>{
+                            history.push({
+                                pathname:'/viewdata'
+                            })
+                        }}>View data</Nav.Link>
+                        <Nav.Link onClick={()=>{
+                            history.push({
+                                pathname:'/result',
+                                state:{
+                                    avgBdo :avgBdo,
+                                    avgCo : avgCo,
+                                    avgDo : avgDo,
+                                    avgEc : avgEc,
+                                    avgNa: avgNa,
+                                    avgPh : avgPh,
+                                    avgWQI : avgWQI,
+                                    bdoForecast: bdoForecast,
+                                    doForecast : doForecast,
+                                    phForecast: phForecast,
+                                    wcoForecast : wcoForecast,
+                                    wecForecast:wecForecast,
+                                    wnaForecast : wnaForecast,
+                                    percentDiffBdoSinceStart : percentDiffBdoSinceStart,
+                                    percentDiffCoSinceStart : percentDiffCoSinceStart,
+                                    percentDiffDoSinceStart : percentDiffCoSinceStart,
+                                    percentDiffEcSinceStart : percentDiffEcSinceStart,
+                                    percentDiffNaSinceStart : percentDiffNaSinceStart,
+                                    percentDiffPhSinceStart : percentDiffPhSinceStart,
+                                    percentDiffWqiLastStart :  percentDiffWqiLastStart,
+                                    percentDiffWqiSinceStart : percentDiffWqiSinceStart
+                                }
+                            });
+                        }}
+                        >Make an entry</Nav.Link>
+                        <Nav.Link onClick={()=>{
+                            history.push({
+                                pathname:'/insights',
+                                state:{
+                                    avgBdo :avgBdo,
+                                    avgCo : avgCo,
+                                    avgDo : avgDo,
+                                    avgEc : avgEc,
+                                    avgNa: avgNa,
+                                    avgPh : avgPh,
+                                    avgWQI : avgWQI,
+                                    bdoForecast: bdoForecast,
+                                    doForecast : doForecast,
+                                    phForecast: phForecast,
+                                    wcoForecast : wcoForecast,
+                                    wecForecast:wecForecast,
+                                    wnaForecast : wnaForecast,
+                                    percentDiffBdoSinceStart : percentDiffBdoSinceStart,
+                                    percentDiffCoSinceStart : percentDiffCoSinceStart,
+                                    percentDiffDoSinceStart : percentDiffCoSinceStart,
+                                    percentDiffEcSinceStart : percentDiffEcSinceStart,
+                                    percentDiffNaSinceStart : percentDiffNaSinceStart,
+                                    percentDiffPhSinceStart : percentDiffPhSinceStart,
+                                    percentDiffWqiLastStart :  percentDiffWqiLastStart,
+                                    percentDiffWqiSinceStart : percentDiffWqiSinceStart
+                                }
+                            });
+                        }}>Insights</Nav.Link>
                         <Nav.Link><Link to="/">Logout</Link></Nav.Link>
                     </Nav>
                 </Navbar>
@@ -319,7 +433,41 @@ function Result() {
                     <strong>{nitrateValidation}</strong><br/>
                     <strong>{coliformValidation}</strong>
                     <strong>{yearValidation}</strong>
+                    <br/>
+                    <Button style={{backgroundColor: "#003B46"}}
+                    onClick={()=>{
+                        history.push({
+                            pathname:'/insights',
+                            state:{
+                                avgBdo :avgBdo,
+                                avgCo : avgCo,
+                                avgDo : avgDo,
+                                avgEc : avgEc,
+                                avgNa: avgNa,
+                                avgPh : avgPh,
+                                avgWQI : avgWQI,
+                                bdoForecast: bdoForecast,
+                                doForecast : doForecast,
+                                phForecast: phForecast,
+                                wcoForecast : wcoForecast,
+                                wecForecast:wecForecast,
+                                wnaForecast : wnaForecast,
+                                percentDiffBdoSinceStart : percentDiffBdoSinceStart,
+                                percentDiffCoSinceStart : percentDiffCoSinceStart,
+                                percentDiffDoSinceStart : percentDiffCoSinceStart,
+                                percentDiffEcSinceStart : percentDiffEcSinceStart,
+                                percentDiffNaSinceStart : percentDiffNaSinceStart,
+                                percentDiffPhSinceStart : percentDiffPhSinceStart,
+                                percentDiffWqiLastStart :  percentDiffWqiLastStart,
+                                percentDiffWqiSinceStart : percentDiffWqiSinceStart
+                            }
+                            
+                        })
+                    }}>
+                        Insights
+                    </Button>
                 </ul>
+               
             </div>
         </div> : null }
     

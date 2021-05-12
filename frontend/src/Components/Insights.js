@@ -10,6 +10,7 @@ import { Line } from "react-chartjs-2";
 import { InputLabel, Select, MenuItem, Dropdown } from "@material-ui/core";
 // import Dropdown from 'react-dropdown';
 import "./Insights.css";
+import "../index.css";
 
 const options = [{ value: "bdo", label: "bdo" }];
 
@@ -17,6 +18,7 @@ const defaultOption = options[0];
 
 function Insights() {
   const location = useLocation();
+  const history = useHistory();
 
   const [avgValue, setAvgValue] = useState(0);
 
@@ -167,8 +169,8 @@ function Insights() {
       );
     } else if (e.target.value == "wco") {
       setforecastData(location.state.wcoForecast);
-      setHeader("Forecast for CO");
-      setHeader2("Statistics for CO");
+      setHeader("Forecast for Conductivity");
+      setHeader2("Statistics for Conductivity");
       setAvgValue(location.state.avgCo.toFixed(2));
       setpercentDiffSinceStart(
         location.state.percentDiffCoSinceStart.toFixed(2)
@@ -210,6 +212,47 @@ function Insights() {
           <Nav className="mr-auto"></Nav>
         </div>
         <Nav className="ml-auto">
+          <Nav.Link
+            onClick={() => {
+              history.push({
+                pathname: "/viewdata",
+              });
+            }}
+          >
+            View data
+          </Nav.Link>
+          <Nav.Link
+            onClick={() => {
+              history.push({
+                pathname: "/insights",
+                state: {
+                  avgBdo: avgBdo,
+                  avgCo: avgCo,
+                  avgDo: avgDo,
+                  avgEc: avgEc,
+                  avgNa: avgNa,
+                  avgPh: avgPh,
+                  avgWQI: avgWqi,
+                  bdoForecast: bdoForecast,
+                  doForecast: doForecast,
+                  phForecast: phForecast,
+                  wcoForecast: wcoForecast,
+                  wecForecast: wecForecast,
+                  wnaForecast: wnaForecast,
+                  percentDiffBdoSinceStart: percentDiffBdoSinceStart,
+                  percentDiffCoSinceStart: percentDiffCoSinceStart,
+                  percentDiffDoSinceStart: percentDiffCoSinceStart,
+                  percentDiffEcSinceStart: percentDiffEcSinceStart,
+                  percentDiffNaSinceStart: percentDiffNaSinceStart,
+                  percentDiffPhSinceStart: percentDiffPhSinceStart,
+                  percentDiffWqiLastStart: percentDiffWqiSinceStart,
+                  percentDiffWqiSinceStart: percentDiffWqiSinceStart,
+                },
+              });
+            }}
+          >
+           Insights
+          </Nav.Link>
           <Nav.Link>
             <Link to="/">Logout</Link>
           </Nav.Link>
@@ -225,7 +268,7 @@ function Insights() {
           <MenuItem value="ph">PH</MenuItem>
           <MenuItem value="wco">Conductivity</MenuItem>
           <MenuItem value="wec">EC</MenuItem>
-          <MenuItem value="wna">NA</MenuItem>
+          <MenuItem value="wna">Nitrate</MenuItem>
         </Select>
 
         {/* <Dropdown options={options} onChange={dropDownChangeHandler} value={defaultOption} placeholder="Select an option" />; */}
@@ -254,7 +297,7 @@ function Insights() {
               <strong>{header2}</strong>
             </h4>
             <hr />
-            <ul>
+            <ul className="list">
               <li>
                 <strong>Average Value: </strong>
                 {avgValue}
