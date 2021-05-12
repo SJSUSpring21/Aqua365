@@ -18,8 +18,10 @@ app = Flask(__name__)
 
 cluster = MongoClient("mongodb+srv://admin:saiyangoku@cluster0.p6nod.mongodb.net/Aqua365?retryWrites=true&w=majority")
 db = cluster["Aqua365"]
-collection = db["collectedData"]
+collectedData = db["collectedData"]
 collectionUser = db["users"]
+dataColumns = db["dataColumns"]
+dataRows = db["dataColumns"]
 
 @app.route('/testapi', methods=['GET'])
 def index():
@@ -491,7 +493,22 @@ def graphsAndAverages():
 def save():
     req = request.get_json(force=True)
     print(req)
-    return req
+    insert_id = collectedData.insert_one(req).inserted_id
+    row_data = {
+        "_id": insert_id,
+        "stationCode":req['stationCode'],
+        "temp":req['temp'],
+        "do":req['do'],
+        "ph":req[''],
+        "conductivity":req['conductivity'],
+        "bod":req['bid'],
+        "nitrate":req['nitrate'],
+        "tc":req['tc'],
+        "year":req['year']
+    }
+    row_id = dataRows.insert_one(row_data).inserted_id
+    return insert_id
+
 
 @app.route('/login', methods=['POST'])
 def login():
