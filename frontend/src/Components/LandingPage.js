@@ -158,6 +158,15 @@ function LandingPage() {
             setpredictedWqi(data.predictedWqi);
         })
 
+        fetch('/graphsAndAverages').then(response => {
+            if (response.ok) {
+                console.log(response)
+                return response.json()
+            }
+        }).then(data => {
+            console.log(data);
+        })
+
     }, [])
 
     const data = {
