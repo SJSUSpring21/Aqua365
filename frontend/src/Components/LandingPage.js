@@ -230,6 +230,15 @@ function LandingPage() {
 
             <div className="graph2">
                 <h1>Graph2</h1>
+                <div class="container">
+                    <br/>
+                    <h1 className="font-applier-header">{string}</h1>
+                    <hr/>
+                    <div className="chart">
+                        <Line data={data} options={options} height={400} width={600} />
+                    </div>
+                    <br/>
+                </div>
             </div>
 
 
