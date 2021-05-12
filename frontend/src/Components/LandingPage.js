@@ -284,7 +284,7 @@ function LandingPage() {
             <div className="graph1">
                 <Navbar variant="dark" style={{backgroundColor: "#003B46"}}>
                     <div style={{marginLeft:"5%"}}>
-                        <Navbar.Brand href="#home"className="Nav-header"><h1>Aqua365</h1></Navbar.Brand>
+                        <Navbar.Brand href="/"className="Nav-header"><h1>Aqua365</h1></Navbar.Brand>
                         <Nav className="mr-auto">
                         </Nav>
                     </div>
@@ -300,7 +300,7 @@ function LandingPage() {
                         style={{backgroundColor: "#003B46", marginRight: "5%",marginTop: "1%"}}
                         onClick={()=>{
                             history.push({
-                                pathname:'/result',
+                                pathname:'/insights',
                                 state:{
                                     avgBdo :avgBdo,
                                     avgCo : avgCo,

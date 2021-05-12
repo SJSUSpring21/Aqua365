@@ -6,6 +6,7 @@ import ViewData from './ViewData';
 
 import Result from './Result';
 import LoginPage from './LoginPage';
+import Insights from './Insights';
 
 class Routes extends Component {
     render () {
@@ -16,6 +17,7 @@ class Routes extends Component {
                 <Route exact path="/result" component = {Result} />
                 <Route exact path='/login' component = {LoginPage} />
                 <Route exact path='/viewdata' component = {ViewData} />
+                <Route exact path='/insights' component = {Insights} />
             </div>
         )
     }

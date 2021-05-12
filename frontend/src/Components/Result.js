@@ -152,7 +152,7 @@ function Result() {
         <div>
         <Navbar variant="dark" style={{backgroundColor: "#003B46"}}>
                     <div style={{marginLeft:"5%"}}>
-                        <Navbar.Brand href="#home"className="Nav-header"><h1>Aqua365</h1></Navbar.Brand>
+                        <Navbar.Brand href="/dashboard"className="Nav-header"><h1>Aqua365</h1></Navbar.Brand>
                         <Nav className="mr-auto">
                         </Nav>
                     </div>
