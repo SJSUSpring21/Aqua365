@@ -7,15 +7,13 @@ import { Navbar, Nav, Row, Col, Image } from "react-bootstrap/esm";
 import Button from "../../node_modules/react-bootstrap/Button";
 import { Link, useHistory, useLocation } from "react-router-dom";
 import { Line } from "react-chartjs-2";
-import { InputLabel, Select, MenuItem , Dropdown} from '@material-ui/core';
+import { InputLabel, Select, MenuItem, Dropdown } from "@material-ui/core";
 // import Dropdown from 'react-dropdown';
-import './Insights.css';
+import "./Insights.css";
 
-const options = [
-    { value: 'bdo', label: 'bdo' },
-]
+const options = [{ value: "bdo", label: "bdo" }];
 
-  const defaultOption = options[0];
+const defaultOption = options[0];
 
 function Insights() {
   const location = useLocation();
@@ -59,8 +57,12 @@ function Insights() {
   const [forecastData, setforecastData] = useState([]);
 
   //Header
-  const [header, setHeader] = useState("Forecast for Biochemical Demand Oxygen")
-  const [header2, setHeader2] = useState("Statistics for Biochemical Demand Oxygen")
+  const [header, setHeader] = useState(
+    "Forecast for Biochemical Demand Oxygen"
+  );
+  const [header2, setHeader2] = useState(
+    "Statistics for Biochemical Demand Oxygen"
+  );
 
   //Avg values
   const [avgBdo, setavgBdo] = useState(0);
@@ -104,7 +106,9 @@ function Insights() {
     console.log(location);
     setforecastData(location.state.bdoForecast);
     setAvgValue(location.state.avgBdo.toFixed(2));
-    setpercentDiffSinceStart(location.state.percentDiffBdoSinceStart.toFixed(2))
+    setpercentDiffSinceStart(
+      location.state.percentDiffBdoSinceStart.toFixed(2)
+    );
   }, []);
 
   const data1 = {
@@ -136,57 +140,65 @@ function Insights() {
   };
 
   let dropDownChangeHandler = (e) => {
-      console.log(e.target.value)
-      if(e.target.value == 'bdo'){
-        setforecastData(location.state.bdoForecast)
-        setHeader("Forecast for Biochemical Demand Oxygen")
-        setHeader2("Statistics for Biochemical Demand Oxygen")
-        setAvgValue(location.state.avgBdo.toFixed(2))
-        setpercentDiffSinceStart(location.state.percentDiffBdoSinceStart.toFixed(2))
-      }
-        else if(e.target.value == 'do' ){
-            setforecastData(location.state.doForecast)
-            setHeader("Forecast for Dissolved Oxygen")
-            setHeader2("Statistics for Dissolved Oxygen")
-            setAvgValue(location.state.avgDo.toFixed(2))
-            setpercentDiffSinceStart(location.state.percentDiffDoSinceStart.toFixed(2))
-      }
-      else if(e.target.value == 'ph') {
-        setforecastData(location.state.phForecast)
-        setHeader("Forecast for PH")
-        setHeader2("Statistics for PH")
-        setAvgValue(location.state.avgPh.toFixed(2))
-        setpercentDiffSinceStart(location.state.percentDiffPhSinceStart.toFixed(2))
-      }
-      else if(e.target.value == 'wco'){
-        setforecastData(location.state.wcoForecast)
-        setHeader("Forecast for CO")
-        setHeader2("Statistics for CO")
-        setAvgValue(location.state.avgCo.toFixed(2))
-        setpercentDiffSinceStart(location.state.percentDiffCoSinceStart.toFixed(2))
-      }
-      else if(e.target.value == 'wec'){
-        setforecastData(location.state.wecForecast)
-        setHeader("Forecast for EC")
-        setHeader2("Statistics for EC")
-        setAvgValue(location.state.avgEc.toFixed(2))
-        setpercentDiffSinceStart(location.state.percentDiffEcSinceStart.toFixed(2))
-      }
-      else if(e.target.value == 'wna'){
-        setforecastData(location.state.wnaForecast)
-        setHeader("Forecast for Nitrate")
-        setHeader2("Statistics for Nitrate")
-        setAvgValue(location.state.avgNa.toFixed(2))
-        setpercentDiffSinceStart(location.state.percentDiffNaSinceStart.toFixed(2))
-      } 
-      else {
-        setforecastData(location.state.bdoForecast)
-        setHeader("Forecast for Biochemical Demand Oxygen")
-        setHeader2("Statistics for Biochemical Demand Oxygen")
-        setAvgValue(location.state.avgBdo.toFixed(2))
-        setpercentDiffSinceStart(location.state.percentDiffBdoSinceStart.toFixed(2))
-      }
-  }
+    console.log(e.target.value);
+    if (e.target.value == "bdo") {
+      setforecastData(location.state.bdoForecast);
+      setHeader("Forecast for Biochemical Demand Oxygen");
+      setHeader2("Statistics for Biochemical Demand Oxygen");
+      setAvgValue(location.state.avgBdo.toFixed(2));
+      setpercentDiffSinceStart(
+        location.state.percentDiffBdoSinceStart.toFixed(2)
+      );
+    } else if (e.target.value == "do") {
+      setforecastData(location.state.doForecast);
+      setHeader("Forecast for Dissolved Oxygen");
+      setHeader2("Statistics for Dissolved Oxygen");
+      setAvgValue(location.state.avgDo.toFixed(2));
+      setpercentDiffSinceStart(
+        location.state.percentDiffDoSinceStart.toFixed(2)
+      );
+    } else if (e.target.value == "ph") {
+      setforecastData(location.state.phForecast);
+      setHeader("Forecast for PH");
+      setHeader2("Statistics for PH");
+      setAvgValue(location.state.avgPh.toFixed(2));
+      setpercentDiffSinceStart(
+        location.state.percentDiffPhSinceStart.toFixed(2)
+      );
+    } else if (e.target.value == "wco") {
+      setforecastData(location.state.wcoForecast);
+      setHeader("Forecast for CO");
+      setHeader2("Statistics for CO");
+      setAvgValue(location.state.avgCo.toFixed(2));
+      setpercentDiffSinceStart(
+        location.state.percentDiffCoSinceStart.toFixed(2)
+      );
+    } else if (e.target.value == "wec") {
+      setforecastData(location.state.wecForecast);
+      setHeader("Forecast for EC");
+      setHeader2("Statistics for EC");
+      setAvgValue(location.state.avgEc.toFixed(2));
+      setpercentDiffSinceStart(
+        location.state.percentDiffEcSinceStart.toFixed(2)
+      );
+    } else if (e.target.value == "wna") {
+      setforecastData(location.state.wnaForecast);
+      setHeader("Forecast for Nitrate");
+      setHeader2("Statistics for Nitrate");
+      setAvgValue(location.state.avgNa.toFixed(2));
+      setpercentDiffSinceStart(
+        location.state.percentDiffNaSinceStart.toFixed(2)
+      );
+    } else {
+      setforecastData(location.state.bdoForecast);
+      setHeader("Forecast for Biochemical Demand Oxygen");
+      setHeader2("Statistics for Biochemical Demand Oxygen");
+      setAvgValue(location.state.avgBdo.toFixed(2));
+      setpercentDiffSinceStart(
+        location.state.percentDiffBdoSinceStart.toFixed(2)
+      );
+    }
+  };
 
   return (
     <div>
@@ -205,7 +217,7 @@ function Insights() {
       </Navbar>
 
       <div class="container">
-          <br/>
+        <br />
         <InputLabel id="label">Attribute</InputLabel>
         <Select labelId="label" id="select" onChange={dropDownChangeHandler}>
           <MenuItem value="bdo">Biochemical Demand of Oxygen</MenuItem>
@@ -216,8 +228,8 @@ function Insights() {
           <MenuItem value="wna">NA</MenuItem>
         </Select>
 
-{/* <Dropdown options={options} onChange={dropDownChangeHandler} value={defaultOption} placeholder="Select an option" />; */}
-        <br/>
+        {/* <Dropdown options={options} onChange={dropDownChangeHandler} value={defaultOption} placeholder="Select an option" />; */}
+        <br />
         <br />
         <h1 className="font-applier-header">{header}</h1>
         <hr />
@@ -226,7 +238,7 @@ function Insights() {
         </div>
         <br />
         <br />
-        
+
         {/* <div class="card">
             <img src="img_avatar.png" alt="Avatar" style={{width:"100%"}}>
             <div class="container">
@@ -236,20 +248,26 @@ function Insights() {
         </div> */}
 
         <div className="card">
-            <div className="card-container">
-                <br/>
-                <h4><strong>{header2}</strong></h4>
-                <hr/>
-                <ul>
-                    <li><strong>Average Value: </strong>{avgValue}</li>
-                    <li><strong>Percentage Difference Since Start: </strong>{percentDiffSinceStart}</li>
-                </ul>
-            </div>
+          <div className="card-container">
+            <br />
+            <h4>
+              <strong>{header2}</strong>
+            </h4>
+            <hr />
+            <ul>
+              <li>
+                <strong>Average Value: </strong>
+                {avgValue}
+              </li>
+              <li>
+                <strong>Percentage Difference Since Start: </strong>
+                {percentDiffSinceStart}
+              </li>
+            </ul>
+          </div>
         </div>
-        <br/>
-        <br/>
-
-
+        <br />
+        <br />
       </div>
     </div>
   );

@@ -8,6 +8,7 @@ import TextField from '@material-ui/core/TextField';
 import {Button} from 'react-bootstrap'
 import axios from 'axios';
 import {Link, useHistory, useLocation} from 'react-router-dom';
+import './Insights.css';
 
 function LandingPage() {
     const history = useHistory();
@@ -352,12 +353,21 @@ function LandingPage() {
                             <Line data={data} options={options} height={400} width={600} />
                         </div>
                     </div>
-                
-                    <Row><br /></Row>
-
-                    
-                
             </div>
+
+            <div className="card">
+            <div className="card-container">
+                <br/>
+                <h4><strong>Insights for Water Quality Index</strong></h4>
+                <hr/>
+                <ul>
+                    <li><strong>Average Value: </strong>{avgWQI.toFixed(2)}</li>
+                    <li><strong>Percentage Difference Since Start: </strong>{percentDiffWqiSinceStart.toFixed(2)}</li>
+                </ul>
+            </div>
+        </div>
+        <br/>
+        <br/>
 
             <div className="graph2">
                 <div class="container">
