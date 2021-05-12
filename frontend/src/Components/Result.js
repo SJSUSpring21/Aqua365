@@ -160,10 +160,12 @@ function Result() {
                         <Nav.Link><Link to="/">Logout</Link></Nav.Link>
                     </Nav>
                 </Navbar>
+        <br/>
+        <br/>
         <div className="forms container">
-                
         <h2 className="form-heading font-applier-header">Make an Entry</h2>
         <hr/>
+        <br/>
         <div className={classes.root}>
         <div>
           <TextField
@@ -288,6 +290,7 @@ function Result() {
         
         </div>
       </div>
+      <br/>
       <Button 
       variant="contained" 
       color="primary"
@@ -298,9 +301,29 @@ function Result() {
       >
             Submit
     </Button>
+    <br/>
+    <br/>
     {flag? <h1>WQI: {WQI.toFixed(2)}</h1>:null}
+    {flag? 
+    <div className="card">
+            <div className="card-container">
+                <br/>
+                <h4><strong>Analysis</strong></h4>
+                <hr/>
+                <ul>
+                    <strong>{temperatureValidation}</strong><br/>
+                    <strong>{dissolvedOxygenValidation}</strong><br/>
+                    <strong>{phLevelValidation}</strong><br/>
+                    <strong>{conductivityValidation}</strong><br/>
+                    <strong>{bodValidation}</strong><br/>
+                    <strong>{nitrateValidation}</strong><br/>
+                    <strong>{coliformValidation}</strong>
+                    <strong>{yearValidation}</strong>
+                </ul>
+            </div>
+        </div> : null }
     
-    <Row>
+    {/* <Row>
       <Col class="Warnings">
         <br />
         {temperatureValidation}
@@ -321,7 +344,7 @@ function Result() {
       </Col>
       <Col></Col>
       <Col></Col>
-    </Row>
+    </Row> */}
     <br />
     {allValidation}
    
