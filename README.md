@@ -19,7 +19,7 @@ Marine life reserves
 https://www.waterboards.ca.gov/resources/data_databases/
 
 ## Architecture design
-![Image description](https://github.com/SJSUSpring21/Team4/blob/main/272_Architecture_Diagram-2.jpeg)
+![Image description](https://github.com/SJSUSpring21/Team4/blob/main/New_272_Architecture_Diagram.jpeg)
 
 
 
