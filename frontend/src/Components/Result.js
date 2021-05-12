@@ -113,13 +113,14 @@ function Result() {
             
             const data = {
                 stationCode: stationCode,
-                temperature: temperature,
-                dissolvedOxygen : dissolvedOxygen,
-                phLevel : phLevel,
+                temp: temperature,
+                do : dissolvedOxygen,
+                ph : phLevel,
                 conductivity : conductivity,
                 bod : bod,
                 nitrate : nitrate,
-                coliform : coliform
+                tc : coliform,
+                year:year
             }
 
             console.log(data);

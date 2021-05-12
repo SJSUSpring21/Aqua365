@@ -21,7 +21,7 @@ db = cluster["Aqua365"]
 collectedData = db["collectedData"]
 collectionUser = db["users"]
 dataColumns = db["dataColumns"]
-dataRows = db["dataColumns"]
+dataRows = db["dataRows"]
 
 @app.route('/testapi', methods=['GET'])
 def index():
@@ -499,15 +499,16 @@ def save():
         "stationCode":req['stationCode'],
         "temp":req['temp'],
         "do":req['do'],
-        "ph":req[''],
+        "ph":req['ph'],
         "conductivity":req['conductivity'],
-        "bod":req['bid'],
+        "bod":req['bod'],
         "nitrate":req['nitrate'],
         "tc":req['tc'],
         "year":req['year']
     }
     row_id = dataRows.insert_one(row_data).inserted_id
-    return insert_id
+    print(insert_id)
+    return {"status":200}
 
 
 @app.route('/login', methods=['POST'])
