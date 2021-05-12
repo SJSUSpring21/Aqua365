@@ -7,7 +7,10 @@ import { Navbar, Nav, Row, Col, Image } from 'react-bootstrap/esm';
 import Button from '../../node_modules/react-bootstrap/Button';
 import {Link, useHistory, useLocation} from 'react-router-dom';
 
+
 function Result() {
+    const location = useLocation();
+
     const[stationCode, setStationCode]=useState(0);
     const[temperature, setTemperature]= useState(0);
     const[dissolvedOxygen, setDissolvedOxygen]= useState(0);
@@ -132,6 +135,11 @@ function Result() {
 
         }
       }
+
+      useEffect(()=>{
+        console.log("123");
+        console.log(location);
+      },[]);
     return (
         <div>
         <Navbar variant="dark" style={{backgroundColor: "#003B46"}}>

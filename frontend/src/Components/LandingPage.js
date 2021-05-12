@@ -15,6 +15,7 @@ function LandingPage() {
     const [yearList, setyearList] = useState([]);
     const [actualWqi, setactualWqi] = useState([]);
     const [predictedWqi, setpredictedWqi] = useState([]);
+    const [graph2_arima_forecast, setGraph2] = useState([]);
 
     //Form Fields
 
@@ -39,6 +40,35 @@ function LandingPage() {
     const[coliformValidation, setColiformValidation]= useState("");
     const[yearValidation, setYearValidation]= useState("");
 
+    //
+    const[avgBdo, setavgBdo] = useState(0)
+    const[avgCo,setavgCo] = useState(0)
+    const[avgDo,setavgDo] = useState(0)
+    const[avgEc, setavgEc] = useState(0)
+    const[avgNa, setavgNa] = useState(0)
+    const[avgPh,setavgPh] = useState(0)
+    const[avgWQI, setavgWQI] = useState(0)
+
+    const[bdoForecast, setbdoForecast] = useState([]);
+    const[doForecast, setdoForecast] = useState([]);
+    const[phForecast, setphForecast] = useState([]);
+    const[wcoForecast, setwcoForecast] = useState([]);
+    const[wecForecast, setwecForecast] = useState([]);
+    const[wnaForecast, setwnaForecast] = useState([]);
+
+    const [percentDiffBdoSinceStart, setpercentDiffBdoSinceStart] = useState(0);
+    const [percentDiffCoSinceStart, setpercentCoSinceStart] = useState(0);
+    const [percentDiffDoSinceStart, setpercentDoSinceStart] = useState(0);
+    const [percentDiffEcSinceStart, setpercentEcSinceStart] = useState(0);
+    const [percentDiffNaSinceStart, setpercentNasSinceStart] = useState(0);
+    const [percentDiffPhSinceStart, setpercentPhSinceStart] = useState(0);
+    const [percentDiffWqiLastStart, setpercentDiffWqiLastStart] = useState(0);
+    const [percentDiffWqiSinceStart, setpercentDiffWqiSinceStart] = useState(0);
+
+
+
+
+    //
     //Inputs
 
     const useStyles = makeStyles((theme) => ({
@@ -165,6 +195,33 @@ function LandingPage() {
             }
         }).then(data => {
             console.log(data);
+            setGraph2(data.graph2_arima_forecast);
+            
+            setavgBdo(data.avgBdo);
+            setavgCo(data.avgCo);
+            setavgDo(data.avgDo);
+            setavgEc(data.avgEc);
+            setavgNa(data.avgNa);
+            setavgPh(data.avgPh);
+            setavgWQI(data.avgWQI);
+
+            setbdoForecast(data.bdoForecast);
+            setdoForecast(data.doForecast);
+            setphForecast(data.phForecast);
+            setwcoForecast(data.wcoForecast);
+            setwecForecast(data.wecForecast);
+            setwnaForecast(data.wnaForecast);
+
+            setpercentDiffBdoSinceStart(data.percentDiffBdoSinceStart);
+            setpercentDoSinceStart(data.percentDiffDoSinceStart);
+            setpercentCoSinceStart(data.percentDiffCoSinceStart);
+            setpercentEcSinceStart(data.percentDiffEcSinceStart);
+            setpercentNasSinceStart(data.percentDiffNaSinceStart);
+            setpercentPhSinceStart(data.percentDiffPhSinceStart);
+            setpercentDiffWqiLastStart(data.percentDiffWqiLastStart);
+            setpercentDiffWqiSinceStart(data.percentDiffWqiSinceStart);
+
+
         })
 
     }, [])
@@ -192,6 +249,21 @@ function LandingPage() {
         ],
     };
 
+    const data1 = {
+        // labels: ['1', '2', '3', '4', '5', '6'],
+        labels: ['2021','2022','2023','2024','2025'],
+        datasets: [
+            {
+                label: 'Predicted WQI',
+                // data: [33, 25, 35, 51, 54, 76],
+                data: graph2_arima_forecast,
+                fill: false,
+                backgroundColor: '#003B46',
+                borderColor: '#003B46',
+            },
+        ],
+    };
+
     const options = {
         maintainAspectRatio: false,
         scales: {
@@ -204,6 +276,8 @@ function LandingPage() {
             ],
         },
     };
+
+    
 
     return (
         <div>
@@ -218,34 +292,82 @@ function LandingPage() {
                         <Nav.Link><Link to="/">Logout</Link></Nav.Link>
                     </Nav>
                 </Navbar>
-                <div class="container">
-                    <br/>
-                    <h1 className="font-applier-header">{string}</h1>
-                    <hr/>
-                    <div className="chart">
-                        <Line data={data} options={options} height={400} width={600} />
+                    <Row class="container">
+                    <Col></Col>
+                    <Col><h1 className="font-applier-header">{string}</h1></Col>
+                    <Col>
+                        <Button
+                        style={{backgroundColor: "#003B46", marginRight: "5%",marginTop: "1%"}}
+                        onClick={()=>{
+                            history.push({
+                                pathname:'/result',
+                                state:{
+                                    avgBdo :avgBdo,
+                                    avgCo : avgCo,
+                                    avgDo : avgDo,
+                                    avgEc : avgEc,
+                                    avgNa: avgNa,
+                                    avgPh : avgPh,
+                                    avgWQI : avgWQI,
+                                    bdoForecast: bdoForecast,
+                                    doForecast : doForecast,
+                                    phForecast: phForecast,
+                                    wcoForecast : wcoForecast,
+                                    wecForecast:wecForecast,
+                                    wnaForecast : wnaForecast,
+                                    percentDiffBdoSinceStart : percentDiffBdoSinceStart,
+                                    percentDiffCoSinceStart : percentDiffCoSinceStart,
+                                    percentDiffDoSinceStart : percentDiffCoSinceStart,
+                                    percentDiffEcSinceStart : percentDiffEcSinceStart,
+                                    percentDiffNaSinceStart : percentDiffNaSinceStart,
+                                    percentDiffPhSinceStart : percentDiffPhSinceStart,
+                                    percentDiffWqiLastStart :  percentDiffWqiLastStart,
+                                    percentDiffWqiSinceStart : percentDiffWqiSinceStart
+                                }
+                            });
+                        }}
+                        >
+                            Get Details
+                        </Button>
+
+                        <Button
+                        style={{backgroundColor: "#003B46",marginTop: "1%"}}
+                        onClick={()=>{
+                            history.push({
+                                pathname:'/result',
+                                state:{
+                                    
+                                }
+                            });
+                        }}
+                        >
+                            Make an entry  
+                        </Button>
+                    </Col>
+                    </Row>
+                    <div class="container">
+                        <br/>
+                        <hr/>
+                        <div className="chart">
+                            <Line data={data} options={options} height={400} width={600} />
+                        </div>
                     </div>
-                    <br/>
-                    <Button
-                    style={{backgroundColor: "#003B46"}}
-                    onClick={()=>{
-                        history.push('/result');
-                    }}
-                    >
-                        Make an entry  
-                    </Button>
-                </div>
+                
+                    <Row><br /></Row>
+
+                    
+                
             </div>
 
             <div className="graph2">
-                <h1>Graph2</h1>
                 <div class="container">
                     <br/>
-                    <h1 className="font-applier-header">{string}</h1>
+                    <h1 className="font-applier-header">Forecast Data from ARIMA Model</h1>
                     <hr/>
                     <div className="chart">
-                        <Line data={data} options={options} height={400} width={600} />
+                        <Line data={data1} options={options} height={400} width={600} />
                     </div>
+                    <br/>
                     <br/>
                 </div>
             </div>
